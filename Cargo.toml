@@ -3,3 +3,6 @@
 name = "hello_world"
 version = "0.0.1"
 authors = [ "Geoffrey Parker <grp@gparker.co>" ]
+
+[dependencies]
+iron = "*"
