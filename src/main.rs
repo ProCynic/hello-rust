@@ -1,14 +1,13 @@
 extern crate iron;
 
 use iron::prelude::*;
-use iron::status;
+
+mod routes;
 
 fn main() {
     const PORT: u16 = 3000;
 
-    let server = Iron::new(|_: &mut Request| {
-        Ok(Response::with((status::Ok, "hello world")))
-    });
+    let server = Iron::new(routes::get_router());
 
     let server_started = server.http(("localhost", PORT));
 

@@ -6,3 +6,4 @@ authors = [ "Geoffrey Parker <grp@gparker.co>" ]
 
 [dependencies]
 iron = "*"
+router = "*"
