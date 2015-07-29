@@ -3,6 +3,7 @@ extern crate iron;
 use iron::prelude::*;
 
 mod routes;
+mod controllers;
 
 fn main() {
     const PORT: u16 = 3000;
