@@ -4,6 +4,7 @@ use iron::prelude::*;
 
 mod routes;
 mod controllers;
+mod models;
 
 fn main() {
     const PORT: u16 = 3000;
