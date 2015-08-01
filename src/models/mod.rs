@@ -10,3 +10,4 @@ pub trait Model {
 }
 
 pub mod user;
+pub use self::user::User;

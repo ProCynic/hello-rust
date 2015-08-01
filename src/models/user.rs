@@ -2,7 +2,7 @@ use models::Model;
 use super::postgres::error::*;
 
 pub struct User {
-    id: u64,
+    pub id: u64,
 }
 
 impl Model for User {
