@@ -1,11 +1,21 @@
 use models::Model;
 use super::postgres::error::*;
 
-#[derive(RustcEncodable)]
+#[derive(RustcEncodable, RustcDecodable)]
 pub struct User {
     pub id: Option<i32>,
     pub email: String,
     pub name: Option<String>
+}
+
+impl Clone for User {
+    fn clone(&self) -> Self {
+        User {
+            id: self.id.clone(),
+            email: self.email.clone(),
+            name: self.name.clone()
+        }
+    }
 }
 
 impl Model for User {

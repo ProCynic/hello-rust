@@ -1,5 +1,6 @@
 extern crate iron;
 extern crate rustc_serialize;
+extern crate bodyparser;
 
 use iron::prelude::*;
 

@@ -7,5 +7,6 @@ authors = [ "Geoffrey Parker <grp@gparker.co>" ]
 [dependencies]
 iron = "*"
 router = "*"
+bodyparser = "*"
 rustc-serialize = "*"
 postgres = "*"
