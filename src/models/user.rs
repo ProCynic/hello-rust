@@ -8,15 +8,19 @@ pub struct User {
 }
 
 impl Model for User {
-    fn insert(&mut self) -> Result<&User, DbError>{
+    fn insert(&mut self) -> Result<&User, Error>{
         // e.g. send an insert statement to db, update self with db generated id
         let conn = Self::get_db_connection().unwrap();
-        let statement = conn.prepare("INSERT INTO app_user (email, name) VALUES $1, $2").unwrap();
+        let statement = conn.prepare("INSERT INTO app_user (email, name) VALUES ($1, $2) RETURNING *").unwrap();
         let result = statement.query(&[&self.email, &self.name]);
-        let rows = result.unwrap();
-        let row = rows.get(0);
-        self.id = row.get("id");
-        Ok(self)
+        match result {
+            Ok(rows) => {
+                let row = rows.get(0);
+                self.id = row.get("id");
+                Ok(self)
+            }
+            Err(e) => Err(e)
+        }
     }
 
     fn update(&mut self) -> Result<&User, DbError>{

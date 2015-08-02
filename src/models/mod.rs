@@ -4,7 +4,7 @@ use self::postgres::error::*;
 use self::postgres::{Connection, SslMode};
 
 pub trait Model {
-    fn insert(&mut self) -> Result<&Self, DbError>;
+    fn insert(&mut self) -> Result<&Self, Error>;
     fn update(&mut self) -> Result<&Self, DbError>;
     fn find_one() -> Result<Self, DbError>;
     fn find() -> Result<Vec<Self>, DbError>;
