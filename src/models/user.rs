@@ -2,7 +2,7 @@ use models::Model;
 use super::postgres::error::*;
 
 pub struct User {
-    pub id: Option<u64>,
+    pub id: Option<i32>,
     pub email: String,
     pub name: Option<String>
 }
@@ -11,7 +11,11 @@ impl Model for User {
     fn insert(&mut self) -> Result<&User, DbError>{
         // e.g. send an insert statement to db, update self with db generated id
         let conn = Self::get_db_connection().unwrap();
-        self.id = Some(1);
+        let statement = conn.prepare("INSERT INTO app_user (email, name) VALUES $1, $2").unwrap();
+        let result = statement.query(&[&self.email, &self.name]);
+        let rows = result.unwrap();
+        let row = rows.get(0);
+        self.id = row.get("id");
         Ok(self)
     }
 
