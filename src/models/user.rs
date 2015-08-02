@@ -8,6 +8,7 @@ pub struct User {
 impl Model for User {
     fn insert(&mut self) -> Result<&User, DbError>{
         // e.g. send an insert statement to db, update self with db generated id
+        let conn = Self::get_db_connection().unwrap();
         self.id = Some(1);
         Ok(self)
     }
