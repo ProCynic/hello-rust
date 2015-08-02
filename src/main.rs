@@ -1,4 +1,5 @@
 extern crate iron;
+extern crate rustc_serialize;
 
 use iron::prelude::*;
 

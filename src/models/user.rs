@@ -1,6 +1,7 @@
 use models::Model;
 use super::postgres::error::*;
 
+#[derive(RustcEncodable)]
 pub struct User {
     pub id: Option<i32>,
     pub email: String,
