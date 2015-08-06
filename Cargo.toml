@@ -1,6 +1,6 @@
 [package]
 
-name = "hello_world"
+name = "hello_rust"
 version = "0.0.1"
 authors = [ "Geoffrey Parker <grp@gparker.co>" ]
 
